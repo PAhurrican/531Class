@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang=`en`>
+
+<head>
+    <meta charset=`UTF-8`>
+    <meta name=`viewport` content=`width=device-width, initial-scale=1.0`>
+    <title>Document</title>
+</head>
+
+<body>
+    <svg width="1980" height="1200">
+        
+    </svg>
+    <script>
+        let tx = 0;
+        let ty = 0;
+        const svgElement = document.querySelector('svg');
+        console.log('test1');
+
+        const addRect = (x,y,width,height,style,transform) => {
+            const svgns = `http://www.w3.org/2000/svg`
+            const rectNode = document.createElementNS(svgns,`rect`);
+            
+            rectNode.setAttribute(`x`, x);
+            rectNode.setAttribute(`y`, y);
+            rectNode.setAttribute(`width`, width);
+            rectNode.setAttribute(`height`, height);
+            rectNode.setAttribute(`style`, style);
+            rectNode.setAttribute(`transform`, transform);
+            svgElement.appendChild(rectNode);
+        }
+        const drawRects = () =>{
+            tx = tx + 1.01;
+            ty = ty + 0.01;
+            addRect(`350`,`400`,`200`,`200`,`fill:rgb(107,41,50)`,` translate(${tx},${ty}) rotate(-25 450 500)`); //6
+            tx = tx + 0.01;
+            ty = ty + 0.02;
+            addRect(`420`,`370`,`200`,`200`,`fill:rgb(107,41,50)`,`translate(${tx},${ty}) rotate(5 520 470)`); //7
+            tx = tx + 2.05;
+            ty = ty + 0.01;
+            addRect(`10`,`300`,`200`,`200`,`fill:rgb(190,42,42)`,`translate(${tx},${ty}) rotate(3 50 300)`); //1
+            tx = tx + 0.01;
+            ty = ty + 1.04;
+            addRect(`75`,`50`,`200`,`200`,`fill:rgb(107,41,50)`,`translate(${tx},${ty}) rotate(60 175 150)`);// 3
+            tx = tx - 0.01;
+            ty = ty - 4.01;
+            addRect(`210`,`30`,`200`,`200`,`fill:rgb(191,48,44)`,`translate(${tx},${ty}) rotate(-5 310 130)`);//4
+            tx = tx - 0.05;
+            ty = ty - 0.01;
+            addRect(`335`,`200`,`200`,`200`,`fill:rgb(232,65,57)`,`translate(${tx},${ty}) rotate(-10 435 300)`); //5
+            tx = tx - 4.05;
+            ty = ty - 0.05;
+            addRect(`75`,`175`,`200`,`200`,`fill:rgb(232,65,57)`,`translate(${tx},${ty}) rotate(45 175 275)`); //2
+            tx = tx - 0.01;
+            ty = ty - 0.05;
+            addRect(`435`,`560`,`200`,`200`,`fill:rgb(190,42,42)`,`translate(${tx},${ty}) rotate(45 535 660)`);//8
+            tx = tx;
+            ty = ty;
+            addRect(`565`,`570`,`200`,`200`,`fill:rgb(228,37,36)`,`translate(${tx},${ty}) rotate(10 665 670)`);//9
+            console.log('test4');
+        }
+        
+        
+        
+        const loop = () =>{
+            setTimeout(loop, 1000/60);
+            addRect('-100','-100',"1880","1100",`fill:rgb(255,255,255)`,` translate(0,0) rotate(-25 450 500)`);
+            drawRects();
+        }
+
+        loop();
+    
+    </script>
+</body>
+
+
+</html>
